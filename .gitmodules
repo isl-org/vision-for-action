@@ -1,0 +1,15 @@
+[submodule "DirectFuturePrediction"]
+	path = DirectFuturePrediction
+	url = https://github.com/bradyz/DirectFuturePrediction
+[submodule "ViZDoom"]
+	path = ViZDoom
+	url = https://github.com/mwydmuch/ViZDoom
+[submodule "gamehook"]
+	path = gamehook
+	url = https://github.com/bradyz/gamehook.git
+[submodule "pyhookv"]
+	path = pyhookv
+	url = https://github.com/bradyz/pyhookv.git
+[submodule "gamehook_gtav"]
+	path = gamehook_gtav
+	url = https://github.com/bradyz/gamehook_gtav
