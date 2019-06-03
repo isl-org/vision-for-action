@@ -116,14 +116,7 @@ def get_rgb_from_one_hot(one_hot):
     return tmp
 
 
-def get_boundary(id_buffer):
-    mins = filters.minimum_filter(id_buffer, size=(2,2,1))
-    maxs = filters.maximum_filter(id_buffer, size=(2,2,1))
-
-    return np.uint8(mins != maxs)
-
-
-def get_boundary_new(id_buffer, semantics_one_hot):
+def get_boundary(id_buffer, semantics_one_hot):
     tmp = id_buffer
     primes = [103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163,
             167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227]
@@ -169,18 +162,6 @@ def get_full_semantics(semantics, extra_labels):
     return one_hot
 
 
-def get_texture_id(inputs):
-    texture_id = np.uint32(take_input('texture_id', inputs))
-    object_id = np.uint32(take_input('object_id', inputs))
-    class_id = get_class_id(object_id)
-
-    # HACK.
-    texture_id[class_id == 3] = object_id[class_id == 3]
-    texture_id[texture_id == 0] = object_id[texture_id == 0]
-
-    return texture_id
-
-
 def get_inputs(desired, inputs, road_ids, should_preprocess):
     """
     desired should be a subset of ['image', 'depth', 'label', 'flow', 'material'].
@@ -211,7 +192,7 @@ def get_inputs(desired, inputs, road_ids, should_preprocess):
         extra_labels = get_extra_labels(texture_id, road_ids)
         semantic = get_full_semantics(class_id_one_hot, extra_labels)
 
-        boundary = get_boundary_new(object_id, extra_labels)
+        boundary = get_boundary(object_id, extra_labels)
 
         result_raw.append(('semantic', semantic))
         result_raw.append(('boundary', boundary))

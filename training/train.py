@@ -8,7 +8,6 @@ import numpy as np
 import tqdm
 
 import model
-import resnet_pytorch
 import datasets
 
 
@@ -96,10 +95,7 @@ def setup(args):
     print(len(train_data))
     print(len(test_data))
 
-    if args.network == 'resnet':
-        net = resnet_pytorch.resnet18(get_n_channels(args.desired), 1)
-    elif args.network == 'nin':
-        net = model.NetworkInNetwork(get_n_channels(args.desired), 1)
+    net = model.NetworkInNetwork(get_n_channels(args.desired), 1)
 
     optim = torch.optim.Adam(
             net.parameters(), lr=args.lr, betas=(0.95, 0.999), weight_decay=args.weight_decay)
@@ -240,7 +236,6 @@ def parse():
     parser = argparse.ArgumentParser()
     parser.add_argument('--desired', type=_list, required=True)
     parser.add_argument('--n_actions', type=int, required=True)
-    parser.add_argument('--network', type=str, default='nin')
     parser.add_argument('--loss', type=str, required=True)
     parser.add_argument('--data_dir', type=str, required=True)
 
