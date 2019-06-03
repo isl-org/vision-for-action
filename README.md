@@ -76,6 +76,5 @@ scenarios.py
   volume={4},
   number={30},
   year={2019},
-  publisher={Science Robotics}
 }
 ```
