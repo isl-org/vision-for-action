@@ -2,6 +2,7 @@
 
 [Brady Zhou](http://www.bradyzhou.com), [Philipp Krähenbühl](http://www.philkr.net), and [Vladlen Koltun](http://www.vladlen.info)  
 Science Robotics, 4(30), 2019  
+[Paper](https://robotics.sciencemag.org/content/4/30/eaaw6661?ijkey=z3zMGrf4SfjN6&keytype=ref&siteid=robotics)  
 [Project](http://www.bradyzhou.com/visionforaction/)
 
 Code to accompany the paper.  
